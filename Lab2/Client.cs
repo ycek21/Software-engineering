@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Lab2
 {
-    public class TcpClient
+    public class Client
     {
-        private System.Net.Sockets.TcpClient tcpClient;
+        private readonly System.Net.Sockets.TcpClient tcpClient;
 
-        public TcpClient(System.Net.Sockets.TcpClient client)
+        public Client(System.Net.Sockets.TcpClient client)
         {
             this.tcpClient = client;
             ThreadPool.QueueUserWorkItem(ReadMessage);

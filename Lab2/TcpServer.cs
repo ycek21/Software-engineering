@@ -11,7 +11,7 @@ namespace Lab2
     public class TcpServer
     {
         private readonly TcpListener _tcpListener;
-        private List<TcpClient> _tcpClients = new List<TcpClient>(2);
+        private List<Client> _tcpClients = new List<Client>(2);
 
         public TcpServer(string ipAddress, int port)
         {
@@ -29,7 +29,7 @@ namespace Lab2
                 }*/
                 /*nie moge zrobic break, gdyz wtedy glowny watek konczy swoje dzialanie 
                 i inne watki, ktore odpowiadaja za nasluchwianie zostaja zamkniete razem z glownym*/
-                this._tcpClients.Add(new TcpClient(this._tcpListener.AcceptTcpClient()));
+                this._tcpClients.Add(new Client(this._tcpListener.AcceptTcpClient()));
 
             }
             
