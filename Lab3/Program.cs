@@ -9,28 +9,33 @@ namespace Lab3
 {
     class Program
     {
-        static void myAsyncCallback(Object state)
+        public static void ReadFile()
         {
-            var myObj = ((object[])state)[1];
-            //var myString = (string) myObj;
-            Console.WriteLine(myObj.ToString());
+            var path = @"E:/Studia/5 SEMESTR/InzynieriaOprogramowania/InzynieriaOprogramowania/Software-engineering/Lab3/bin/text.txt";
+            var buffer = new byte[new FileInfo(path).Length];
+            var fs = new FileStream(path,
+                FileMode.Open);
+            fs.BeginRead(buffer, 0, buffer.Length, Callback, new object[] { fs, buffer });
+        }
 
-            var stream = ((object[])state)[0];
-
-            stream.EndStream();
-
+        private static void Callback(IAsyncResult iAsyncResult)
+        {
+            if (iAsyncResult.IsCompleted)
+            {
+                var state = (object[])iAsyncResult.AsyncState;
+                var fs = (FileStream)state[0];
+                var buffer = (byte[]) state[1];
+                fs.EndRead(iAsyncResult);
+                fs.Close();
+                var message = Encoding.GetEncoding("UTF-8").GetString(buffer);
+                Console.WriteLine($"File Content: {message}");
+            }
         }
 
         static void Main(string[] args)
         {
-            /* zadanie 6*/
-
-            FileStream filestream = new FileStream("file.txt",FileMode.Open);
-            var buffer = new byte[64];
-            filestream.BeginRead(buffer, 0, 64, myAsyncCallback, new object[] { filestream, buffer});
-            
-
-
+            ReadFile();
+            Console.ReadLine();
 
         }
     }

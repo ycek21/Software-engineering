@@ -16,9 +16,9 @@ namespace Lab6
             //https://en.wikipedia.org/wiki/Netpbm_format
             // przeprowadzic operacje splotu na tym obrazie
             // po wykonaniu filtru splotowego zapisac plik
-            // nalezy dopisac te wszytskie rzeczy, ktore zobaczymy jak otworzymy przykladowy obraz w tym folderze
-            //najpierw zapisac obraz
-            // potem zapisac drugi obraz, ktory jest po zastosowaniu filtra
+            // nalezy dopisac te wszytskie rzeczy, ktore zobaczymy jak otworzymy przykladowy image w tym folderze
+            //najpierw zapisac image
+            // potem zapisac drugi image, ktory jest po zastosowaniu filtra
 
 
             var picture = new int[,] {{1,2,3}, {4,5,6},{7,8,9}};

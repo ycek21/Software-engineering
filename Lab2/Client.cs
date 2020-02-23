@@ -16,7 +16,7 @@ namespace Lab2
             this.tcpClient = client;
             ThreadPool.QueueUserWorkItem(ReadMessage);
         }
-        //dlaczego musi byc obiekt jako parametr, albo dlaczego dziala tak jak wojtas
+        //dlaczego musi byc obiekt jako parametr
 
         public void ReadMessage(Object state)
         {
